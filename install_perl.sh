@@ -4,8 +4,10 @@
 #sudo apt-get install perl
 #sudo cpan App::cpanminus
 #sudo cpan install YAML
-sudo apt-get install libdbd-pg-perl
-sudo apt-get install libpq-dev
+#sudo apt-get install libdbd-pg-perl
+#sudo apt-get install libpq-dev
+
+
 # Install older local version
 # https://www.cpan.org/src/
 src="https://www.cpan.org/src/5.0/perl-5.14.4.tar.bz2"
