@@ -1,0 +1,31 @@
+#!/bin/sh
+
+# Script that will check the fastq files for PCR primers 
+# to see if these will be expressed.
+# These must be RNA-seq files.
+
+# These are the untreated controls
+path="/share/lustre/archive/SA464/illumina_wtss/A14559/sequence"
+cd $path
+
+primerpath="/home/dyap/Projects/PrimerDesign/Splice/primer3"
+primerfile=$primerpath"/hct116_htert_primer_order.txt"
+
+outfile="/home/dyap/Projects/Takeda_T3/primerQC/QC.txt"
+rm -f $outfile
+
+for i in `ls *2.fastq` 
+	do
+	echo "File query= "$i
+	
+	for j in `cat $primerfile | awk -F"," '{print $1}' | tail -n +2`
+		do
+		echo $j
+		fwd=`grep $j $primerfile | awk -F"," '{print $6}'`
+		rev=`grep $j $primerfile | awk -F"," '{print $8}'`
+		fc=`grep $fwd $i | wc -l`
+		rc=`grep $rev $i | wc -l`
+		echo $i ":" $j "fwd= " $fc "rev= "$rc >>  $outfile
+		done 
+	done
+

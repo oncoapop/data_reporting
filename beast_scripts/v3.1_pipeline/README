@@ -1,0 +1,16 @@
+This pipeline takes the output of Adi's script which is the 
+masked genome and primer3 output
+
+v3.1
+ouputs the N masked sequence in addition to the amplicon
+
+v3.1_batch-Rev.sh for Peter's paper Reviews
+v3.1_batch-SS.sh for Jas's Single Cell Project
+v3.1_batch-TITAN for Gavin's TITAN (from v1.5 pipeline) single cell validation
+v3.1_batch-TNBC-SS for Jas' TNBC SS (hg18 - from v1.5 pipeline) validation using TITAN predictions
+
+v3
+checks insilico PCR, annotates and displays for checking...
+
+15 Oct 2013
+Damian Yap

@@ -1,0 +1,87 @@
+v4.4
+####
+
+Version using SA532 535 for Xenograft targeted deep seq piepline
+
+1.
+
+
+v4.2
+####
+This is based on v4.1 (which worked for FL project and template for Automated Primer Design Pipeline)
+But makes use of VCFs for MutationSeq of WGS data
+
+For cell mixing Project v4.2_batch-cellmix (hTertL2-HCT116 mixing single cell expt)
+
+1. v4.2_parse2primer3.sh takes input from command line for 2 amplicon ranges <opt range> <secondary range>
+    where range is <123-456>
+   - fixed reiteration of primer3
+
+2. This makes use of the following files to generate the design space (masking flanking SNVs using vcf-tools)
+
+3. vcf_zipper_index.sh (pre-processing the vcfs for vcf-tools)
+4. mask_fillin_vcf.sh (uses vcf-tools to mask SNV/indel using N and generate primer design space)
+
+AND EITHER
+5. pos_vcf_parser.sh (only get the vcf of interest)
+OR
+6. pos_sampler.sh (samples n positions per chromosome and filters them, $4>0.9, $5=0/1 (Het)
+
+7. Sample layout
+$1-ID			$2-REF	$3-ALT	$4-PR	$5-GT
+SA040_chr11_104972190   C       T       0.98    0/1     
+$6-MASKED SEQ
+GAGTTTAAATAAGATTGCAAAATGACAGCAAGCTNCTCCTAAAGCCTCAGTTCCTTTCTGGGCTTTCCTTTCCTTTCTAAAGGCTGCAAGAGTCATCTAATTTCTTCTC
+
+----------------------------------------------
+
+8. FOR CHECKING OF PRIMERS (with SNP masked VCFs)
+use check_primers.sh
+
+9. Archived version (actual pipeline): v4.2_pipeline_14_12_03.tgz
+----------------------------------------------
+
+Additions:
+=========
+10. Output: http://godel.cluster.bccrc.ca/workflow/primer3check/v4_pipeline/cellmix/
+
+11. After choosing positions, manifest_generator.sh used to generate Amplicon manifest with Phased SNP (read for position file), v4.2_pipeline_14_12_08.tgz
+
+12. use  order_primers.sh to add adaptors and format them into plate format for ordering. v4.2_pipeline_14_12_11.tgz
+
+*******************************************************************************************************************************
+
+v4.1
+####
+This pipeline is based on v3.2 which takes positions but no DNA seq input
+Fixed version v4.1_pipeline_14_04_01.tgz
+
+Changelog
+========
+1. Generates primer3 input using new format (incl N masked DNA Seq, ref, alt & remarks) 
+   - in SEQUENCE_TEMPLATE+ & P3_COMMENT= fields, respectively
+2. Runs primer3 with v4.1 settings and also reiterates GC_CLAMP=0
+3. Display pipeline upgraded and works
+4. context derived from input sequence (5' 10bp from position of interest, SNV or 1st indel base)
+5. Generates the manifest in new format for new pipeline.
+
+
+v3.2 (generates primer3 output)
+####
+No DNA sequences (pre-checked to avoid SNPs 499 bp up and downstream)
+positions but no DNA seq (get from UCSC REF)
+
+v3.1
+####
+ouputs the N masked sequence in addition to the amplicon
+
+v3.1_batch-Rev.sh for Peter's paper Reviews
+v3.1_batch-SS.sh for Jas's Single Cell Project
+
+
+v3
+####
+checks insilico PCR, annotates and displays for checking...
+
+20 Nov 2014
+Damian Yap

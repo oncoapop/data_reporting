@@ -1,0 +1,17 @@
+1002  cd /share/lustre/abashash/EIF4A3/star_fusion_cufflinks_pipeline/OUTPUT/RUN
+ 1003  ls
+ 1004  cd TK_17_21_star_cufflinks
+ 1005  ls
+ 1006  cd outputs/results/
+ 1007  ls -l 
+ 1008  cd cufflinks/
+ 1009  ls -l 
+ 1010  cd TK_17_21/
+ 1011  ls -l 
+ 1012  less genes.fpkm_tracking
+ 1013  less genes.fpkm_tracking
+ 1014* cut -f9 genes.fpkm_tracking
+ 1015  less genes.fpkm_tracking
+ 1016  cut -f9 genes.fpkm_tracking
+ 1017  cut -f10 genes.fpkm_tracking
+ 1018  cut -f10 genes.fpkm_tracking | less

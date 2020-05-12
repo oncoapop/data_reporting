@@ -1,0 +1,7 @@
+This pipeline takes the output of Adi's script which is the 
+masked genome and primer3 output
+
+checks insilico PCR, annotates and displays for checking...
+
+11 Oct 2013
+Damian Yap

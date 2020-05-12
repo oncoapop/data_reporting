@@ -1,0 +1,83 @@
+This pipeline takes the output of Adi's or *_2primer3 scripts which is the 
+masked genome and primer3 output
+
+v3.3 (Oct 2015) updated Mar 2016
+For T3 paper review
+
+spliceRT_2primer3.sh
+for RT-PCR (isPCR on genomic but not QC-ed as introns also included)
+spliceRT2,3_2primer3.sh
+for RT-PCR (isPCR on transcriptome which is supplied as a fasta file)
+
+1. name="Splice-RT", RT2, RT3 etc.
+2. Tyler gave an output where the sequence of DOMAIN of the factors enriched in CG formation was [bracketed]
+3. This was used to generate a primer3 input file which was fed into the pipeline
+4. with one automatic reiteration of the primer3 conditions for the less stringent
+
+if bracket region > 300, then only use that region if not use the whole sequence
+and mark the [bracketed] region with start and end (if <100 bp, else use only first [bracket and +20 bp window)
+-need to change the before and after lines for the grep for each of the conditions
+
+also amended the pipline to all RT (but for CG factors so isPCR is okay just no annotation and SNVs)
+- moved annotation model from display pipeline to the primer summary to get the positions from the isPCR as a check since I cannot QC any other way
+
+need to check also that splice variants are taken into consideration
+modified to remove all non essential fields as design file only has id and seq
+
+**v3.3_inSilicoPcrRT.sh**
+**Main improvement is that TRANSCRIPTOME (v19_Gencode) is used instead of using the hg19 genomic sequence
+
+
+=========
+
+v3.3 (9 Feb - XX Feb 2015)
+v3.3_batch-splice2.sh for Arusha/Takeda Splice Signature testing
+
+1. Also use the custom genome for specific splice events (two types see Wiki)
+2. Use whole sample ID as Chromosome
+3. Annotation is left OFF
+
+4. use v3.3_display_pipeline2.sh
+
+4. Change primer summary to accommodate format of splice joins which uses : as separator
+5. Change primer summary to consider the middle of the start and end coordinates as the breakpoint and calculate 
+
+v3.3 (28 Apr - 4 May 2014)
+v3.3 (11 Mar - XX Mar 2016)
+v3.3_batch-splice1.sh for Arusha/Takeda run-on splicing Project 
+v3.3_batch-spliceCG.sh for generating a new CG panel based on better higher enrichment of motifs
+
+Preprocessing taken care of my using the script splice1_2primer3.sh
+Preprocessing taken care of my using the script spliceCG_2primer3.sh
+
+1. This uses a custom genome for specific run-on projects!!!
+2. Sample_ID are differently formatted
+3. Turn Annotation OFF
+4. De novo generate position file (do not use GetSeq.R)
+5. Change primer summary to accommodate format of splice joins which uses : as separator
+6. Change primer summary to consider the middle of the start and end coordinates as the breakpoint and calculate 
+   miseq coverage from there
+7. Annotation will fail as no annotation is done (already encoded in the name)
+
+After manual selection of the primers and amplicons, a text file with headers (comma delimited) is created with the 
+selected list. This is saved in Splice/positions/selected_positions.txt
+
+The following script is run to add adaptors to the selected primers and generate the order file (sheet for left and right primers
+and filtered ampliconmanifest. The script is selected.sh
+
+TO DO
+generate the supplemental figure file
+
+
+v3.1
+ouputs the N masked sequence in addition to the amplicon
+
+v3.1_batch-Rev.sh for Peter's paper Reviews
+v3.1_batch-SS.sh for Jas's Single Cell Project
+
+
+v3
+checks insilico PCR, annotates and displays for checking...
+
+15 Oct 2013
+Damian Yap

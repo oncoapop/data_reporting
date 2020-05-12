@@ -1,0 +1,18 @@
+This pipeline takes the output of Adi's script which is the 
+masked genome and primer3 output
+
+v3.1
+ouputs the N masked sequence in addition to the amplicon
+
+v3.1_batch-Rev.sh for Peter's paper Reviews
+v3.1_batch-SS.sh for Jas's Single Cell Project
+
+
+v3
+checks insilico PCR, annotates and displays for checking...
+
+v2.8
+Produces the primer3 output independent of Adi's script 
+
+23 Nov 2013
+Damian Yap

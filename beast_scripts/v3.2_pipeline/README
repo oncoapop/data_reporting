@@ -1,0 +1,23 @@
+This pipeline takes the output of Adi's script which is the 
+masked genome and primer3 output
+
+v3.2 (generates primer3 output)
+####
+No DNA sequences (pre-checked to avoid SNPs 499 bp up and downstream)
+positions but no DNA seq (get from UCSC REF)
+(does not work well with v1.5 pipeline output)
+
+v3.1
+####
+ouputs the N masked sequence in addition to the amplicon
+
+v3.1_batch-Rev.sh for Peter's paper Reviews
+v3.1_batch-SS.sh for Jas's Single Cell Project
+
+
+v3
+####
+checks insilico PCR, annotates and displays for checking...
+
+15 Oct 2013
+Damian Yap

@@ -1,0 +1,11 @@
+# Script to plot multiple ChIP-seq on the same page and region for comparison
+# Regions are specified in the data.frame bglist (this corresponds to the .broadpeak file
+# usually output from the MACS)
+
+# Compare with inputs as IgG sometime have poor signal
+# Comparisons 1. Nodrug-signal    - H2AX-input-nodrug_219_treat_pileup.bedgraph
+#	      2. Drug-10-8-signal - H2AX-input-10-8CX_219_treat_pileup.bedgraph
+#             3. Drug-10-7-signal - H2AX-input-10-7CX_219_treat_pileup.bedgraph
+#             4. Drug-10-6-signal - H2AX-input-10-6CX_219_treat_pileup.bedgraph
+
+v1.1 compares inputs

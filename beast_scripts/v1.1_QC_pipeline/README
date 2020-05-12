@@ -1,0 +1,37 @@
+Pipeline to combine primer order files into one file with F and R 
+then input data from qPCR melt curve
+Compare with calculated values and give output 
+
+v1.1
+====
+1. QC_1_get_seq_Tm.sh
+
+pri=$projdir"/CG_primers_ordered.txt"
+# Format
+# VSIG10@118506182:WSB2@118490283
+# WDR77@111985275:OVGP1@111969263
+
+p3design="/home/dyap/Projects/PrimerDesign/Splice/primer3/hct116_htert_p3_design.txt"
+Format
+ACTR8@53904009:CHDH@53875026_160-170,ACTR8@53904009:CHDH@53875026,160,170,WT,CTAAGACAAT,CATCTGACGACACCAAAAAGAAGATGTACAGCTCCATCCTAGTGGTGGGAGGTGGTTTGATGTTTCATAAAGCTCAAGAATTTCTGCAGCACAGAATTCTCAACAAAATGCCACCATCCTTCAGGCGAATTATTGAAAATGTGGATGTGATCACAAGGCCTAAGACAATCACAAAGAGTGTGTAGGCCAGCCCCGGTCACAGAGTGCACCGTATCCTGTCACTTCTGGATGTGAGGGAGAAGTGAGTCATCTCATTCCCCTCCGTGGATCAGAGGACTTGGACTAGATAGAAGCATGTGGTGTCTCCTACGAGGCCTGGGCCGGCCTGGAGCCCTGGCACGGGGAGCCCTGGGGCAGCAGCAATCCCTGGGTGCCCGGGCCCTGGCCAGCGCAGGCTCTGAGAGCCGGGACGAGTACAGCTATGTGGTGGTGGGCGCGGGCTCGGCGGGCTGCGTGCTGGCTGGGAGGCTCACGGAGGACCCCGCCGAGCGCGTGCTGCTGCTGGAGGCCGGGCCCAAGGACGTGCTC
+
+primers="/home/dyap/Projects/PrimerDesign/Splice/primer3/hct116_htert_primer_order.txt"
+Format
+TIMM50@39980603:DLL3@39989832_325-335,chrTIMM50@39980603:DLL3@39989832,298,457,160 bp,TGTCCCGAGAGTCTCCAGATG,21,GGCTTCAGGCAGACTCTGAAG,21,N/A,N/A,TIMM50@39980603:DLL3@39989832_325-335
+
+The output of the this script is /home/dyap/dyap_temp/Temp_cal-input
+Format Name<tab>Sequence-in-upper-case
+
+This then calls Temp_cal.sh (in the same directory, runs from within the script)
+(which calculates the Tm of the amplicon and which reads the input file and generates the output file /home/dyap/dyap_temp/Temp_cal-output
+in the format (FS="_") Tm=$4, then FS="=", $2
+Shared_chr20_31940471_Tm=81.9_Length=154
+
+3. QC_3_qPCRmeltTemp3.sh
+This is the one that was modified to take a generic plate qPCR
+Script to map qPCR plate with primer plate and also with the amplicon name, length as well as calculated Tm
+
+4. /home/dyap/Projects/R/R-scripts/Rscript3 QC_4_Temp_Corr.R (change Project name in the file itself)
+R script to read in the calculated and obtained Tms of amplicons and plot PDF graphs for QC purposes
+
+

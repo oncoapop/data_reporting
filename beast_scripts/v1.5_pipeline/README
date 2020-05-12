@@ -1,0 +1,11 @@
+This is the version for the backup generation of primers for the review of Eirew et al 2012
+This is only the backup version
+
+Basically a v0 design ie position based (using REF sequences not taking into consideration
+any SNV/SNP or indels)
+
+should upgrade web version of the pipeline to run this when ported to Pleiades which can run command-line
+in silico PCR. Need to add safe guards to prevent overloading system / multiple submission etc.
+
+
+

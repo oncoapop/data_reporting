@@ -1,0 +1,37 @@
+This pipeline takes the output of Adi's script which is the 
+masked genome and primer3 output
+
+TODO 
+####
+1. Generates the primer3 output either with input DNA with SNP 
+masked OR if no input GetSeq.R from USCS genomic seq
+2. Reiterations to ensure all positions have primers using online 
+query from pegasus
+3. using the command w3m -dump 
+"http://pegasus.myseqdept.org/cgi-bin/webPcr?wp_db=Human%20Genome%20hg19&wp_f="$fwdpri"&wp_r="$revpri"&Submit=submit&wp_size=600&wp_perfect=18&wp_good=18"
+
+v4.0
+parse2primer3 first working
+Format
+sample_chrN_pos REF ALT relpos bases masked_seq
+display pipeline not working
+
+v3.2 (generates primer3 output)
+####
+No DNA sequences (pre-checked to avoid SNPs 499 bp up and downstream)
+positions but no DNA seq (get from UCSC REF)
+
+v3.1
+####
+ouputs the N masked sequence in addition to the amplicon
+
+v3.1_batch-Rev.sh for Peter's paper Reviews
+v3.1_batch-SS.sh for Jas's Single Cell Project
+
+
+v3
+####
+checks insilico PCR, annotates and displays for checking...
+
+15 Oct 2013
+Damian Yap
