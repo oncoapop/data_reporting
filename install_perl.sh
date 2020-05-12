@@ -24,8 +24,8 @@ cd $HOME
 
      cd $ver
      sudo ./Configure -des -Dprefix=$HOME/localperl
-     sudo make
-     sudo make test
+     make
+     make test
      sudo make install
 
 myperl="$HOME/perl-5.14.4/perl"

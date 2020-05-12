@@ -4,8 +4,8 @@ wd="/home/dyap/ind231"
 cd $wd
 
 file="expanded_list_grouped_V5b.csv"
-formatted="sift_input.csv"
-audit="sift_input_audit.csv"
+formatted="sift_input_select.csv"
+audit="sift_input_audit2.csv"
 
 rm -f $formatted
 rm -fr $audit
@@ -13,7 +13,8 @@ rm -fr $audit
 # Remove the header
 # select fro n < 5
 #for i in `cat $file | tail -n +2 | awk -F, '{if ($15 < 5) print $0}'`
-for i in `cat $file | tail -n +2 `
+for i in `cat $file | tail -n +2 | awk -F, '{if ($2 == "BRCA1" || \
+$2 == "BRCA2" || $2 == "PALB2" || $2 == "TP53" || $2 == "RAD51" ) print $0}'`
 	do
 	chr=`grep "$i" $file | awk -F"," '{print $1}'`
 	gene=`grep "$i" $file | awk -F"," '{print $2}'`
